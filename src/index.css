@@ -2,6 +2,29 @@
 
 @layer base{
   body{
-    font-family: "Roboto Serif", serif;
+    font-family: "Poppins", sans-serif;
+  }
+}
+
+@layer utilities {
+  .btn-hover {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease, background-color 0.5s ease;
+  }
+
+  .btn-hover:hover {
+    transform: rotateX(15deg);
+  }
+  
+  .animated-text {
+    background-size: 200% 200%;
+    animation: gradient-move 4s ease infinite;
+  }
+
+  @keyframes gradient-move {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 }

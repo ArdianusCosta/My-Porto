@@ -1,4 +1,4 @@
-import HeroImage from "/assets/hero-img.webp";
+import HeroImage from "/assets/costa/costa.jpg";
 
 const Image = {
   HeroImage,
@@ -8,15 +8,18 @@ export default Image;
 
 import Tools1 from "/assets/tools/vscode.png";
 import Tools2 from "/assets/tools/reactjs.png";
-import Tools3 from "/assets/tools/nextjs.png";
+import Tools3 from "/assets/tools/laravel.png";
 import Tools4 from "/assets/tools/tailwind.png";
 import Tools5 from "/assets/tools/bootstrap.png";
 import Tools6 from "/assets/tools/js.png";
 import Tools7 from "/assets/tools/nodejs.png";
 import Tools8 from "/assets/tools/github.png";
-import Tools9 from "/assets/tools/ai.png";
-import Tools10 from "/assets/tools/canva.png";
-import Tools11 from "/assets/tools/figma.png";
+import Tools9 from "/assets/tools/canva.png";
+import Tools10 from "/assets/tools/figma.png";
+import Tools11 from "/assets/tools/mysql.png";
+import Tools12 from "/assets/tools/laragon.png";
+import Tools13 from "/assets/tools/mamp.png";
+import Tools14 from "/assets/tools/postman.png";
 
 export const listTools = [
   {
@@ -36,7 +39,7 @@ export const listTools = [
   {
     id: 3,
     gambar: Tools3,
-    nama: "Next JS",
+    nama: "Laravel",
     ket: "Framework",
     dad: "300",
   },
@@ -78,22 +81,43 @@ export const listTools = [
   {
     id: 9,
     gambar: Tools9,
-    nama: "Adobe Illustrator",
-    ket: "Design App",
-    dad: "900",
-  },
-  {
-    id: 10,
-    gambar: Tools10,
     nama: "Canva",
     ket: "Design App",
     dad: "1000",
   },
   {
-    id: 11,
-    gambar: Tools11,
+    id: 10,
+    gambar: Tools10,
     nama: "Figma",
     ket: "Design App",
+    dad: "1100",
+  },
+  {
+    id: 11,
+    gambar: Tools11,
+    nama: "MySQL",
+    ket: "Database & Server",
+    dad: "1100",
+  },
+  {
+    id: 12,
+    gambar: Tools12,
+    nama: "Laragon",
+    ket: "Database & Server",
+    dad: "1100",
+  },
+  {
+    id: 13,
+    gambar: Tools13,
+    nama: "MAMP",
+    ket: "Database & Server",
+    dad: "1100",
+  },
+  {
+    id: 14,
+    gambar: Tools14,
+    nama: "Postman",
+    ket: "API & Testing",
     dad: "1100",
   },
 ];
@@ -151,7 +175,7 @@ export const listProyek = [
     gambar: Proyek6,
     nama: "Company Profile 2.0",
     desk: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, laborum!",
-    tools: ["NextJS", "TailwindCSS", "Framermotion"],
+    tools: ["Laravel", "TailwindCSS", "Framermotion"],
     dad: "700",
   },
 ];
