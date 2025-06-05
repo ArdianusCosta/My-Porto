@@ -6,16 +6,18 @@ function App() {
   return (
     <>
     {/*Home*/}
+    <div className="container mx-auto px-4">
       <div className="hero grid md:grid-cols-2 items-center pt-10 xl:gap-0 gap-6 grid-cols-1">
         <div>
           <div className="flex items-center gap-3 mb-6 bg-zinc-800 w-fit p-4 rounded-2xl">
-            <img src={DataImage.TekunImage} alt="Hero Image Costa" className="w-10 rounded-md" loading="lazy"/>
+            <img src={DataImage.TekunImage} alt="Hero Image Costa" className="w-10 rounded-md" loading="lazy" />
             <q>Sesuatu yang indah, Lahir dari Ketekunan.😎</q>
           </div>
           <h1 className="text-5xl/tight font-bold mb-6">
             Hai, Kenalin Saya <span className="animated-text bg-gradient-to-r from-violet-500 via-pink-500 to-blue-500 bg-clip-text text-transparent">Costa</span>
           </h1>
-          <p className="text-base/loose mb-6 opacity-50">Saya seorang full stack web developer yang suka bikin hal-hal keren dan bermanfaat lewat kode. Mulai dari tampilan depan yang menarik sampai ke sistem backend yang solid, saya menikmati proses membangun aplikasi web dari awal sampai jadi. Di sini, kamu bisa lihat beberapa proyek yang pernah saya kerjakan. Saya percaya bahwa setiap baris kode punya cerita. Dan yaa portofolio ini adalah tempat saya berbagi cerita itu. Terima kasih sudah mampir. Kalau kamu tertarik ngobrol atau kerja bareng, jangan ragu untuk hubungi saya ya!
+          <p className="text-base/loose mb-6 opacity-50">
+            Saya seorang full stack web developer yang suka bikin hal-hal keren dan bermanfaat lewat kode. Mulai dari tampilan depan yang menarik sampai ke sistem backend yang solid, saya menikmati proses membangun aplikasi web dari awal sampai jadi. Di sini, kamu bisa lihat beberapa proyek yang pernah saya kerjakan. Saya percaya bahwa setiap baris kode punya cerita. Dan yaa portofolio ini adalah tempat saya berbagi cerita itu. Terima kasih sudah mampir. Kalau kamu tertarik ngobrol atau kerja bareng, jangan ragu untuk hubungi saya ya!
           </p>
           <div className="flex items-center sm:gap-4 gap-2">
             <a href="#" className="btn-hover bg-violet-700 text-white p-4 rounded-2xl hover:bg-violet-600 transition-all duration-500">
@@ -25,10 +27,16 @@ function App() {
               Lihat Project <i className="ri-eye-fill ri-lg"></i>
             </a>
           </div>
-
         </div>
-        <img src={DataImage.HeroImage} alt="Hero Image Costa" className="w-[500px] md:ml-auto" loading="lazy"/>
+        <img
+          src={DataImage.HeroImage}
+          alt="Hero Image Costa"
+          className="w-full max-w-[300px] sm:max-w-[400px] md:max-w-[500px] mx-auto md:ml-auto object-cover md:rounded-full md:aspect-square"
+          style={{ transform: 'translateX(25px)' }}
+          loading="lazy"
+        />
       </div>
+    </div>
 
       {/*About Me*/}
       <div className="about mt-32 py-10">
