@@ -87,14 +87,14 @@ export const listTools = [
     gambar: Tools9,
     nama: "Canva",
     ket: "Design App",
-    dad: "1000",
+    dad: "900",
   },
   {
     id: 10,
     gambar: Tools10,
     nama: "Figma",
     ket: "Design App",
-    dad: "1100",
+    dad: "1000",
   },
   {
     id: 11,
@@ -108,21 +108,21 @@ export const listTools = [
     gambar: Tools12,
     nama: "Laragon",
     ket: "Database & Server",
-    dad: "1100",
+    dad: "1200",
   },
   {
     id: 13,
     gambar: Tools13,
     nama: "MAMP",
     ket: "Database & Server",
-    dad: "1100",
+    dad: "1300",
   },
   {
     id: 14,
     gambar: Tools14,
     nama: "Postman",
     ket: "API & Testing",
-    dad: "1100",
+    dad: "1400",
   },
 ];
 

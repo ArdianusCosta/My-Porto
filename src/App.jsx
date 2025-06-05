@@ -6,33 +6,49 @@ function App() {
   return (
     <>
     {/*Home*/}
+    <div className="container mx-auto px-4">
       <div className="hero grid md:grid-cols-2 items-center pt-10 xl:gap-0 gap-6 grid-cols-1">
+
+        {/* Kiri: Quote + Intro + Tombol */}
         <div>
-          <div className="flex items-center gap-3 mb-6 bg-zinc-800 w-fit p-4 rounded-2xl">
-            <img src={DataImage.TekunImage} alt="Hero Image Costa" className="w-10 rounded-md" loading="lazy"/>
+          {/* Quote Box */}
+          <div className="animate__animated animate__fadeInDown animate__delay-2s flex items-center gap-3 mb-6 bg-zinc-800 w-fit p-4 rounded-2xl">
+            <img src={DataImage.TekunImage} alt="Hero Image Costa" className="w-10 rounded-md" loading="lazy" />
             <q>Sesuatu yang indah, Lahir dari Ketekunan.😎</q>
           </div>
-          <h1 className="text-5xl/tight font-bold mb-6">
-            Hai, Kenalin Saya <span className="animated-text bg-gradient-to-r from-violet-500 via-pink-500 to-blue-500 bg-clip-text text-transparent">Costa</span>
-          </h1>
-          <p className="text-base/loose mb-6 opacity-50">Saya seorang full stack web developer yang suka bikin hal-hal keren dan bermanfaat lewat kode. Mulai dari tampilan depan yang menarik sampai ke sistem backend yang solid, saya menikmati proses membangun aplikasi web dari awal sampai jadi. Di sini, kamu bisa lihat beberapa proyek yang pernah saya kerjakan. Saya percaya bahwa setiap baris kode punya cerita. Dan yaa portofolio ini adalah tempat saya berbagi cerita itu. Terima kasih sudah mampir. Kalau kamu tertarik ngobrol atau kerja bareng, jangan ragu untuk hubungi saya ya!
-          </p>
-          <div className="flex items-center sm:gap-4 gap-2">
-            <a href="#" className="btn-hover bg-violet-700 text-white p-4 rounded-2xl hover:bg-violet-600 transition-all duration-500">
-              Unduh CV <i className="ri-download-line ri-lg"></i>
-            </a>
-            <a href="#" className="btn-hover bg-zinc-700 text-white p-4 rounded-2xl hover:bg-zinc-600 transition-all duration-500">
-              Lihat Project <i className="ri-eye-fill ri-lg"></i>
-            </a>
-          </div>
 
+          {/* Intro + Paragraf + Tombol */}
+          <div className="animate__animated animate__fadeInUp animate__delay-2s">
+            <h1 className="text-5xl/tight font-bold mb-6">
+              Hai, Kenalin Saya <span className="animated-text bg-gradient-to-r from-violet-500 via-pink-500 to-blue-500 bg-clip-text text-transparent">Costa</span>
+            </h1>
+            <p className="text-base/loose mb-6 opacity-50">
+              Saya seorang full stack web developer yang suka bikin hal-hal keren dan bermanfaat lewat kode. Mulai dari tampilan depan yang menarik sampai ke sistem backend yang solid, saya menikmati proses membangun aplikasi web dari awal sampai jadi. Di sini, kamu bisa lihat beberapa proyek yang pernah saya kerjakan. Saya percaya bahwa setiap baris kode punya cerita. Dan yaa portofolio ini adalah tempat saya berbagi cerita itu. Terima kasih sudah mampir. Kalau kamu tertarik ngobrol atau kerja bareng, jangan ragu untuk hubungi saya ya!
+            </p>
+            <div className="flex items-center sm:gap-4 gap-2">
+              <a href="#" className="btn-hover bg-violet-700 text-white p-4 rounded-2xl hover:bg-violet-600 transition-all duration-500">
+                Unduh CV <i className="ri-download-line ri-lg"></i>
+              </a>
+              <a href="#project" className="btn-hover bg-zinc-700 text-white p-4 rounded-2xl hover:bg-zinc-600 transition-all duration-500">
+                Lihat Project <i className="ri-eye-fill ri-lg"></i>
+              </a>
+            </div>
+          </div>
         </div>
-        <img src={DataImage.HeroImage} alt="Hero Image Costa" className="w-[500px] md:ml-auto" loading="lazy"/>
+
+        {/* Kanan: Gambar */}
+        <div className="animate__animated animate__fadeInRight animate__delay-3s">
+          <img src={DataImage.HeroImage} alt="Hero Image Costa" className="w-[500px] md:ml-auto animate__animated animate__fadeInRight animate__delay-3s" loading="lazy"/>
+        </div>
+
       </div>
+    </div>
+
 
       {/*About Me*/}
-      <div className="about mt-32 py-10">
-      <div className="xl:w-2/3 lg:w-3/4 w-full mx-auto p-7 bg-zinc-800 rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-[1.01]">
+      <div className="about mt-32 py-10" id="about">
+      <h1 className="text-center text-4xl font-bold mb-10" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">About Me</h1>
+      <div className="xl:w-2/3 lg:w-3/4 w-full mx-auto p-7 bg-zinc-800 rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-[1.01]" data-aos="fade-up" data-aos-duration="1500" data-aos-once="true">
           <img src={DataImage.Costaaja} alt="About Image atas Costa" className="w-12 rounded-md mb-10 sm:hidden" loading="lazy"/>
           <p className="text-base/loose mb-10 text-zinc-300">
             Halo, saya Ardianus Caesar Emanual Ruicosta Duu — tapi kamu bisa panggil saya <span className="text-violet-500 font-semibold">Costa</span>. Saya adalah seorang Full Stack Web Developer yang memiliki minat besar dalam membangun solusi digital yang efisien, menarik, dan fungsional.
@@ -58,12 +74,12 @@ function App() {
 
         {/*Tools*/}
         <div className="tools mt-32">
-            <h1 className="text-4xl/snug font-bold mb-4">Tools yang saya pakai</h1>
-            <p className="xl:w-2/5 lg:w-2/4 md:w-2/3 sm:w-3/4 w-full text-base/loose opacity-50">Berikut Ini beberapa Tools yang pernah saya pakai untuk pembuatan Website ataupun Desain.</p>
+            <h1 className="text-4xl/snug font-bold mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">Tools yang saya pakai</h1>
+            <p className="xl:w-2/5 lg:w-2/4 md:w-2/3 sm:w-3/4 w-full text-base/loose opacity-50" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300" data-aos-once="true">Berikut Ini beberapa Tools yang pernah saya pakai untuk pembuatan Website ataupun Desain.</p>
             <div className="tools-box mt-14 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
 
             {listTools.map(tool => (
-              <div className="flex items-center gap-2 p-3 border border-zinc-600 rounded-md hover:bg-zinc-800 group" key={tool.id}>
+              <div className="flex items-center gap-2 p-3 border border-zinc-600 rounded-md hover:bg-zinc-800 group" key={tool.id} data-aos="fade-up" data-aos-duration="1000" data-aos-delay={tool.dad} data-aos-once="true">
                 <img src={tool.gambar} alt="Tools Image Costa" className="w-14 bg-zinc-800 p-1 group-hover:bg-zinc-900" loading="lazy"/>
                 <div>
                   <h4 className="font-bold">{tool.nama}</h4>
@@ -76,13 +92,13 @@ function App() {
       </div>
 
       
-      {/*Project*/}
-      <div className="project mt-32 py-10">
-        <h1 className="text-center text-4xl font-bold mb-2">Project</h1>
-        <p className="text-base/loose text-center opacity-50">Berikut ini beberapa Project yang pernah saya kerjakan</p>
+      {/*Project costa*/}
+      <div className="project mt-32 py-10" id="project">
+        <h1 className="text-center text-4xl font-bold mb-2" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">Project</h1>
+        <p className="text-base/loose text-center opacity-50" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300" data-aos-once="true">Berikut ini beberapa Project yang pernah saya kerjakan</p>
         <div className="project-box mt-14 grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
               {listProyek.map(project => (
-                <div className="p-4 bg-zinc-800 rounded-md" key={project.id}>
+                <div className="p-4 bg-zinc-800 rounded-md" key={project.id} data-aos="fade-up" data-aos-duration="1000" data-aos-delay={project.dad} data-aos-once="true"> 
                   <img src={project.gambar} alt="Project Image Costa" loading="lazy" />
                   <div>
                     <h1 className="text-2xl font-bold my-4">{project.nama}</h1>
@@ -99,6 +115,31 @@ function App() {
                 </div>
               ))}
         </div>
+      </div>
+
+      {/*Contact costa*/}
+      <div className="contact mt-32 sm:p-10 p-0" id="contact">
+        <h1 className="text-4xl mb-2 font-bold text-center" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">Contact</h1>
+        <p className="text-base/loose text-center mb-10 opacity-50" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300" data-aos-once="true">Mari terhubungi dengan Saya</p>
+        <form action="https://formsubmit.co/costaaja017@gmail.com" method="POST"  className="bg-zinc-800 p-10 sm:w-fit w-full mx-auto rounded-md" autoComplete="off" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500" data-aos-once="true">
+          <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-2">
+              <label className="font-semibold">Nama Lengkap</label>
+              <input type="text" name="nama" placeholder="Masukan Nama lengkap anda..." className="border border-zinc-500 p-2 rounded-md" required />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label className="font-semibold">Email</label>
+              <input type="email" name="email" placeholder="Masukan Email anda..." className="border border-zinc-500 p-2 rounded-md" required />
+            </div>
+            <div  className="flex flex-col gap-2">
+              <label htmlFor="pesan" className="font-semibold">Pesan</label>
+              <textarea name="pesan" id="pesan" placeholder="Masukan pesan anda..." className="border border-zinc-500 p-2 rounded-md" required cols="45" rows="7"></textarea>
+            </div>
+            <div className="text-center">
+             <button type="submit" className="bg-violet-700 p-3 rounded-lg w-full cursor-pointer border border-zinc-600 hover:bg-violet-600">Kirim Pesan</button>
+            </div>
+          </div>
+        </form>
       </div>
     </>
   )
