@@ -9,7 +9,7 @@ function App() {
       <div className="hero grid md:grid-cols-2 items-center pt-10 xl:gap-0 gap-6 grid-cols-1">
         <div>
           <div className="flex items-center gap-3 mb-6 bg-zinc-800 w-fit p-4 rounded-2xl">
-            <img src={DataImage.HeroImage} alt="Hero Image Costa" className="w-10 rounded-md" loading="lazy"/>
+            <img src={DataImage.TekunImage} alt="Hero Image Costa" className="w-10 rounded-md" loading="lazy"/>
             <q>Sesuatu yang indah, Lahir dari Ketekunan.😎</q>
           </div>
           <h1 className="text-5xl/tight font-bold mb-6">
@@ -33,7 +33,7 @@ function App() {
       {/*About Me*/}
       <div className="about mt-32 py-10">
       <div className="xl:w-2/3 lg:w-3/4 w-full mx-auto p-7 bg-zinc-800 rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-[1.01]">
-          <img src={DataImage.HeroImage} alt="About Image atas Costa" className="w-12 rounded-md mb-10 sm:hidden" loading="lazy"/>
+          <img src={DataImage.Costaaja} alt="About Image atas Costa" className="w-12 rounded-md mb-10 sm:hidden" loading="lazy"/>
           <p className="text-base/loose mb-10 text-zinc-300">
             Halo, saya Ardianus Caesar Emanual Ruicosta Duu — tapi kamu bisa panggil saya <span className="text-violet-500 font-semibold">Costa</span>. Saya adalah seorang Full Stack Web Developer yang memiliki minat besar dalam membangun solusi digital yang efisien, menarik, dan fungsional.
             Saya senang bekerja dari sisi frontend hingga backend, karena saya percaya bahwa memahami keseluruhan proses pengembangan akan menghasilkan produk yang lebih utuh dan berkualitas.
@@ -42,7 +42,7 @@ function App() {
             Portofolio ini saya buat untuk membagikan hasil kerja saya, sekaligus sebagai ruang bermain dan eksplorasi teknologi. Terima kasih sudah berkunjung — saya harap kamu bisa menemukan sesuatu yang menginspirasi di sini.
           </p>
           <div className="flex items-center justify-between">
-            <img src={DataImage.HeroImage} alt="About Image bawah Costa" className="w-12 rounded-md sm:block hidden" loading="lazy"/>
+            <img src={DataImage.Costaaja} alt="About Image bawah Costa" className="w-12 rounded-md sm:block hidden" loading="lazy"/>
             <div className="flex items-center gap-6">
               <div className="transition duration-300 hover:scale-105 hover:text-violet-400">
                 <h1 className="text-4xl mb-1">13<span className="text-violet-500">+</span></h1>

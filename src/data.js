@@ -1,7 +1,11 @@
 import HeroImage from "/assets/costa/costa.jpg";
+import TekunImage from "/assets/costa/costa_tekun.jpg";
+import Costaaja from "/assets/costa/costaaja.jpg"
 
 const Image = {
   HeroImage,
+  TekunImage,
+  Costaaja,
 };
 
 export default Image;
