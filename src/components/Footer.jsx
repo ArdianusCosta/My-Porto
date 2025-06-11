@@ -1,9 +1,24 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 
 const Footer = () => {
+  const [logo, setLogo] = useState(null);
+
+  useEffect(() => {
+    axios.get('http://localhost:8000/api/logo')
+    .then(res => setLogo(res.data))
+    .catch(err => {
+      console.error("Gagal fetch Logo", err);
+    })
+  })
+
+  if(!logo) return null;
+
   return (
     <div className='mt-32 py-4 flex md:flex-row flex-col gap-8 md:gap-0 justify-between items-center'>
-        <h1 className='text-2xl font-bold'>ACERD</h1>
+        <h1 className='text-2xl font-bold'>
+          <a href={logo.url}>{logo.logo}</a>
+        </h1>
         <div className="flex gap-7">
             <a href="#home">Home</a>
             <a href="#about">About Me</a>

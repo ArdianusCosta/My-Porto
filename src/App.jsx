@@ -1,7 +1,32 @@
+import { useEffect, useState } from "react";
 import DataImage from "./data"
 import {listTools, listProyek} from "./data";
+import axios from "axios";
 
 function App() {
+
+  const [motivasi, setMotivasi] = useState(null);
+
+  useEffect(()=> {
+  axios.get('http://localhost:8000/api/motivasi')
+  .then(res => setMotivasi(res.data))
+  .catch(err => {
+    console.error("Gagal ambil data", err);
+  })
+},[] )
+
+const [home, setHome] = useState(null);
+
+useEffect(()=>{
+  axios.get('http://localhost:8000/api/deskripsi')
+  .then(res => setHome(res.data))
+  .catch(err => {
+    console.error("Gagal ambil data", err);
+  })
+}, [])
+
+  if(!motivasi) return null;
+  if(!home) return null;
 
   return (
     <>
@@ -12,18 +37,20 @@ function App() {
         {/* Kiri: Quote + Intro + Tombol */}
         <div>
           {/* Quote Box */}
-          <div className="animate__animated animate__fadeInDown animate__delay-2s flex items-center gap-3 mb-6 bg-zinc-800 w-fit p-4 rounded-2xl">
-            <img src={DataImage.TekunImage} alt="Hero Image Costa" className="w-10 rounded-md" loading="lazy" />
-            <q>Sesuatu yang indah, Lahir dari Ketekunan.😎</q>
-          </div>
+          {motivasi && (
+             <div className="animate__animated animate__fadeInDown animate__delay-2s flex items-center gap-3 mb-6 bg-zinc-800 w-fit p-4 rounded-2xl">
+             <img src={motivasi.foto_motivasi} alt="Hero Image Costa" className="w-10 rounded-md" loading="lazy" />
+             <q>{motivasi.motivasi}</q>
+           </div>
+          )}
 
           {/* Intro + Paragraf + Tombol */}
           <div className="animate__animated animate__fadeInUp animate__delay-2s">
             <h1 className="text-5xl/tight font-bold mb-6">
-              Hai, Kenalin Saya <span className="animated-text bg-gradient-to-r from-violet-500 via-pink-500 to-blue-500 bg-clip-text text-transparent">Costa</span>
+              Hai, Kenalin Saya <span className="animated-text bg-gradient-to-r from-violet-500 via-pink-500 to-blue-500 bg-clip-text text-transparent">{home.judul}</span>
             </h1>
             <p className="text-base/loose mb-6 opacity-50">
-              Saya seorang full stack web developer yang suka bikin hal-hal keren dan bermanfaat lewat kode. Mulai dari tampilan depan yang menarik sampai ke sistem backend yang solid, saya menikmati proses membangun aplikasi web dari awal sampai jadi. Di sini, kamu bisa lihat beberapa proyek yang pernah saya kerjakan. Saya percaya bahwa setiap baris kode punya cerita. Dan yaa portofolio ini adalah tempat saya berbagi cerita itu. Terima kasih sudah mampir. Kalau kamu tertarik ngobrol atau kerja bareng, jangan ragu untuk hubungi saya ya!
+              {home.isi}
             </p>
             <div className="flex items-center sm:gap-4 gap-2">
               <a href="#" className="btn-hover bg-violet-700 text-white p-4 rounded-2xl hover:bg-violet-600 transition-all duration-500">
@@ -38,7 +65,7 @@ function App() {
 
         {/* Kanan: Gambar */}
         <div className="animate__animated animate__fadeInRight animate__delay-3s">
-          <img src={DataImage.HeroImage} alt="Hero Image Costa" className="w-[500px] md:ml-auto animate__animated animate__fadeInRight animate__delay-3s" loading="lazy"/>
+          <img src={home.foto_home} alt="Hero Image Costa" className="w-[500px] md:ml-auto animate__animated animate__fadeInRight animate__delay-3s" loading="lazy"/>
         </div>
 
       </div>
