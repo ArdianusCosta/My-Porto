@@ -25,8 +25,19 @@ useEffect(()=>{
   })
 }, [])
 
+const [about, setAbout] = useState(null);
+
+useEffect(()=>{
+  axios.get('http://localhost:8000/api/about-me')
+  .then(res=>setAbout(res.data))
+  .catch(err => {
+    console.error("Gagal mengambil data", err);
+  })
+}, [])
+
   if(!motivasi) return null;
   if(!home) return null;
+  if(!about) return null;
 
   return (
     <>
@@ -74,25 +85,21 @@ useEffect(()=>{
 
       {/*About Me*/}
       <div className="about mt-32 py-10" id="about">
-      <h1 className="text-center text-4xl font-bold mb-10" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">About Me</h1>
+      <h1 className="text-center text-4xl font-bold mb-10" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">{about.judul}</h1>
       <div className="xl:w-2/3 lg:w-3/4 w-full mx-auto p-7 bg-zinc-800 rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-[1.01]" data-aos="fade-up" data-aos-duration="1500" data-aos-once="true">
-          <img src={DataImage.Costaaja} alt="About Image atas Costa" className="w-12 rounded-md mb-10 sm:hidden" loading="lazy"/>
+          <img src={about.foto_about_me} alt="About Image atas Costa" className="w-12 rounded-md mb-10 sm:hidden" loading="lazy"/>
           <p className="text-base/loose mb-10 text-zinc-300">
-            Halo, saya Ardianus Caesar Emanual Ruicosta Duu — tapi kamu bisa panggil saya <span className="text-violet-500 font-semibold">Costa</span>. Saya adalah seorang Full Stack Web Developer yang memiliki minat besar dalam membangun solusi digital yang efisien, menarik, dan fungsional.
-            Saya senang bekerja dari sisi frontend hingga backend, karena saya percaya bahwa memahami keseluruhan proses pengembangan akan menghasilkan produk yang lebih utuh dan berkualitas.
-            Dengan pendekatan yang kreatif dan perhatian terhadap detail, saya selalu berusaha menciptakan pengalaman pengguna yang menyenangkan dan performa aplikasi yang solid.
-            Ketika tidak sedang ngoding, saya suka mengeksplorasi teknologi baru, bereksperimen dengan UI/UX, atau sekadar ngulik ide-ide kecil yang bisa jadi besar.
-            Portofolio ini saya buat untuk membagikan hasil kerja saya, sekaligus sebagai ruang bermain dan eksplorasi teknologi. Terima kasih sudah berkunjung — saya harap kamu bisa menemukan sesuatu yang menginspirasi di sini.
+            Halo, saya Ardianus Caesar Emanual Ruicosta Duu — tapi kamu bisa panggil saya <span className="text-violet-500 font-semibold">{about.nama_isi}</span>. {about.isi}
           </p>
           <div className="flex items-center justify-between">
-            <img src={DataImage.Costaaja} alt="About Image bawah Costa" className="w-12 rounded-md sm:block hidden" loading="lazy"/>
+            <img src={about.foto_about_me} alt="About Image bawah Costa" className="w-12 rounded-md sm:block hidden" loading="lazy"/>
             <div className="flex items-center gap-6">
               <div className="transition duration-300 hover:scale-105 hover:text-violet-400">
-                <h1 className="text-4xl mb-1">13<span className="text-violet-500">+</span></h1>
+                <h1 className="text-4xl mb-1">{about.project_selesai}<span className="text-violet-500">+</span></h1>
                 <p>Project Selesai</p>
               </div>
               <div className="transition duration-300 hover:scale-105 hover:text-violet-400">
-                <h1 className="text-4xl mb-1">3<span className="text-violet-500">+</span></h1>
+                <h1 className="text-4xl mb-1">{about.tahun_pengalaman}<span className="text-violet-500">+</span></h1>
                 <p>Tahun Pengalaman</p>
               </div>
             </div>
