@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import DataImage from "./data"
-import {listTools, listProyek} from "./data";
+import {listProyek} from "./data";
 import axios from "axios";
 
 function App() {
@@ -36,14 +35,17 @@ useEffect(()=>{
 }, [])
 
 const [tool, setTool] = useState(null);
+const [listTools, setListTools] = useState([]);
 
-useEffect(() =>{
+useEffect(() => {
   axios.get('http://localhost:8000/api/tools')
-  .then(res=>setTool(res.data))
-  .catch(err => {
-    console.error("Gagal ambil data", err)
-  })
-}, [])
+    .then(res => setTool(res.data))
+    .catch(err => console.error("Gagal ambil data tools", err));
+
+  axios.get('http://localhost:8000/api/tool-pakai')
+    .then(res => setListTools(res.data))
+    .catch(err => console.error("Gagal ambil data tool pakai", err));
+}, []);
 
   if(!motivasi) return null;
   if(!home) return null;
@@ -124,14 +126,14 @@ useEffect(() =>{
             <div className="tools-box mt-14 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
 
             {listTools.map(tool => (
-              <div className="flex items-center gap-2 p-3 border border-zinc-600 rounded-md hover:bg-zinc-800 group" key={tool.id} data-aos="fade-up" data-aos-duration="1000" data-aos-delay={tool.dad} data-aos-once="true">
-                <img src={tool.gambar} alt="Tools Image Costa" className="w-14 bg-zinc-800 p-1 group-hover:bg-zinc-900" loading="lazy"/>
-                <div>
-                  <h4 className="font-bold">{tool.nama}</h4>
-                  <p className="opacity-50">{tool.ket}</p>
+                <div className="flex items-center gap-2 p-3 border border-zinc-600 rounded-md hover:bg-zinc-800 group" key={tool.id} data-aos="fade-up" data-aos-duration="1000" data-aos-delay={tool.urutan_tools} data-aos-once="true">
+                  <img src={tool.foto_tool} alt="Tools Image Costa" className="w-14 bg-zinc-800 p-1 group-hover:bg-zinc-900" loading="lazy" />
+                  <div>
+                    <h4 className="font-bold">{tool.judul_tool}</h4>
+                    <p className="opacity-50">{tool.deskripsi_tool}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
             </div>
         </div>
       </div>
