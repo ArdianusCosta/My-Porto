@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import {listProyek} from "./data";
 import axios from "axios";
 
 function App() {
@@ -47,10 +46,21 @@ useEffect(() => {
     .catch(err => console.error("Gagal ambil data tool pakai", err));
 }, []);
 
+const [project, setProject] = useState([]);
+
+useEffect(() => {
+  axios.get('http://localhost:8000/api/project')
+    .then(res => setProject(res.data))
+    .catch(err => {
+      console.error("Gagal ambil data", err);
+    });
+}, []);
+
   if(!motivasi) return null;
   if(!home) return null;
   if(!about) return null;
   if(!tool) return null;
+  if(!project) return null;
 
   return (
     <>
@@ -137,32 +147,36 @@ useEffect(() => {
             </div>
         </div>
       </div>
-
       
       {/*Project costa*/}
       <div className="project mt-32 py-10" id="project">
-        <h1 className="text-center text-4xl font-bold mb-2" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">Project</h1>
-        <p className="text-base/loose text-center opacity-50" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300" data-aos-once="true">Berikut ini beberapa Project yang pernah saya kerjakan</p>
-        <div className="project-box mt-14 grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
-              {listProyek.map(project => (
-                <div className="p-4 bg-zinc-800 rounded-md" key={project.id} data-aos="fade-up" data-aos-duration="1000" data-aos-delay={project.dad} data-aos-once="true"> 
-                  <img src={project.gambar} alt="Project Image Costa" loading="lazy" />
-                  <div>
-                    <h1 className="text-2xl font-bold my-4">{project.nama}</h1>
-                    <p className="text-base/loose mb-4">{project.desk}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {project.tools.map((tool, index) => (
-                        <p className="py-1 px-3 border border-zinc-500 bg-zinc-600 rounded-md font-semibold" key={index}>{tool}</p>
-                      ))}
-                    </div>
-                      <div className="mt-8 text-center"> 
-                        <a href="#" className="bg-violet-700 p-3 rounded-lg block border border-zinc-600 hover:bg-violet-600">Lihat Project</a>
-                      </div>
-                  </div>
-                </div>
-              ))}
-        </div>
+      <h1 className="text-center text-4xl font-bold mb-2" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">Project</h1>
+      <p className="text-base/loose text-center opacity-50" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300" data-aos-once="true">
+        Berikut ini beberapa Project yang pernah saya kerjakan
+      </p>
+
+      <div className="project-box mt-14 grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
+        {project.map((projectItem, idx) => (
+          <div className="p-4 bg-zinc-800 rounded-md" key={idx} data-aos="fade-up" data-aos-duration="1000" data-aos-delay={projectItem.urutan_project} data-aos-once="true">
+            <img src={projectItem.foto_project} alt="Project Image Costa" loading="lazy" />
+            <div>
+              <h1 className="text-2xl font-bold my-4">{projectItem.judul_project}</h1>
+              <p className="text-base/loose mb-4">{projectItem.isi_project}</p>
+              <div className="flex flex-wrap gap-2">
+                {projectItem.bahasa_pemrograman.map((bahasa, index) => (
+                  <p className="py-1 px-3 border border-zinc-500 bg-zinc-600 rounded-md font-semibold" key={index}>{bahasa}</p>
+                ))}
+              </div>
+              <div className="mt-8 text-center">
+                <a href={projectItem.url_project} className="bg-violet-700 p-3 rounded-lg block border border-zinc-600 hover:bg-violet-600" target="_blank" rel="noopener noreferrer">
+                  Lihat Project
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
+    </div>
 
       {/*Contact costa*/}
       <div className="contact mt-32 sm:p-10 p-0" id="contact">

@@ -17,7 +17,7 @@ const Footer = () => {
   return (
     <div className='mt-32 py-4 flex md:flex-row flex-col gap-8 md:gap-0 justify-between items-center'>
         <h1 className='text-2xl font-bold'>
-          <a href={logo.url}>{logo.logo}</a>
+          <a href={logo.url} target='blank' rel='nooper noreferrer'>{logo.logo}</a>
         </h1>
         <div className="flex gap-7">
             <a href="#home">Home</a>
