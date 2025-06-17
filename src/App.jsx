@@ -2,65 +2,48 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function App() {
-
   const [motivasi, setMotivasi] = useState(null);
+  const [home, setHome] = useState(null);
+  const [about, setAbout] = useState(null);
+  const [tool, setTool] = useState(null);
+  const [listTools, setListTools] = useState([]);
+  const [project, setProject] = useState([]);
 
-  useEffect(()=> {
-  axios.get('http://localhost:8000/api/motivasi')
-  .then(res => setMotivasi(res.data))
-  .catch(err => {
-    console.error("Gagal ambil data", err);
-  })
-},[] )
+  useEffect(() => {
+    axios.get('http://localhost:8000/api/motivasi').then(res => setMotivasi(res.data)).catch(err => console.error("Gagal ambil data", err));
+    axios.get('http://localhost:8000/api/deskripsi').then(res => setHome(res.data)).catch(err => console.error("Gagal ambil data", err));
+    axios.get('http://localhost:8000/api/about-me').then(res => setAbout(res.data)).catch(err => console.error("Gagal mengambil data", err));
+    axios.get('http://localhost:8000/api/tools').then(res => setTool(res.data)).catch(err => console.error("Gagal ambil data tools", err));
+    axios.get('http://localhost:8000/api/tool-pakai').then(res => setListTools(res.data)).catch(err => console.error("Gagal ambil data tool pakai", err));
+    axios.get('http://localhost:8000/api/project').then(res => setProject(res.data)).catch(err => console.error("Gagal ambil data", err));
+  }, []);
 
-const [home, setHome] = useState(null);
+  const [formData, setFormData] = useState({
+    nama: '',
+    email: '',
+    pesan: ''
+  });
 
-useEffect(()=>{
-  axios.get('http://localhost:8000/api/deskripsi')
-  .then(res => setHome(res.data))
-  .catch(err => {
-    console.error("Gagal ambil data", err);
-  })
-}, [])
+  const handleChange = (e) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
+  };
 
-const [about, setAbout] = useState(null);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post('http://localhost:8000/api/contact', formData);
+      alert('Pesan berhasil dikirim!');
+      setFormData({ nama: '', email: '', pesan: '' });
+    } catch (err) {
+      alert('Gagal mengirim pesan.');
+      console.error(err);
+    }
+  };
 
-useEffect(()=>{
-  axios.get('http://localhost:8000/api/about-me')
-  .then(res=>setAbout(res.data))
-  .catch(err => {
-    console.error("Gagal mengambil data", err);
-  })
-}, [])
-
-const [tool, setTool] = useState(null);
-const [listTools, setListTools] = useState([]);
-
-useEffect(() => {
-  axios.get('http://localhost:8000/api/tools')
-    .then(res => setTool(res.data))
-    .catch(err => console.error("Gagal ambil data tools", err));
-
-  axios.get('http://localhost:8000/api/tool-pakai')
-    .then(res => setListTools(res.data))
-    .catch(err => console.error("Gagal ambil data tool pakai", err));
-}, []);
-
-const [project, setProject] = useState([]);
-
-useEffect(() => {
-  axios.get('http://localhost:8000/api/project')
-    .then(res => setProject(res.data))
-    .catch(err => {
-      console.error("Gagal ambil data", err);
-    });
-}, []);
-
-  if(!motivasi) return null;
-  if(!home) return null;
-  if(!about) return null;
-  if(!tool) return null;
-  if(!project) return null;
+  if (!motivasi || !home || !about || !tool || !project) return null;
 
   return (
     <>
@@ -178,26 +161,28 @@ useEffect(() => {
       </div>
     </div>
 
-      {/*Contact costa*/}
-      <div className="contact mt-32 sm:p-10 p-0" id="contact">
+    {/* Contact */}
+    <div className="contact mt-32 sm:p-10 p-0" id="contact">
         <h1 className="text-4xl mb-2 font-bold text-center" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">Contact</h1>
         <p className="text-base/loose text-center mb-10 opacity-50" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300" data-aos-once="true">Mari terhubungi dengan Saya</p>
-        <form action="https://formsubmit.co/costaaja017@gmail.com" method="POST"  className="bg-zinc-800 p-10 sm:w-fit w-full mx-auto rounded-md" autoComplete="off" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500" data-aos-once="true">
+        <form onSubmit={handleSubmit} method="POST" className="bg-zinc-800 p-10 sm:w-fit w-full mx-auto rounded-md" autoComplete="off" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500" data-aos-once="true">
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-2">
               <label className="font-semibold">Nama Lengkap</label>
-              <input type="text" name="nama" placeholder="Masukan Nama lengkap anda..." className="border border-zinc-500 p-2 rounded-md" required />
+              <input type="text" name="nama" value={formData.nama} onChange={handleChange} placeholder="Masukan Nama lengkap anda..." className="border border-zinc-500 p-2 rounded-md" required />
             </div>
             <div className="flex flex-col gap-2">
               <label className="font-semibold">Email</label>
-              <input type="email" name="email" placeholder="Masukan Email anda..." className="border border-zinc-500 p-2 rounded-md" required />
+              <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Masukan Email anda..." className="border border-zinc-500 p-2 rounded-md" required />
             </div>
-            <div  className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2">
               <label htmlFor="pesan" className="font-semibold">Pesan</label>
-              <textarea name="pesan" id="pesan" placeholder="Masukan pesan anda..." className="border border-zinc-500 p-2 rounded-md" required cols="45" rows="7"></textarea>
+              <textarea name="pesan" id="pesan" value={formData.pesan} onChange={handleChange} placeholder="Masukan pesan anda..." className="border border-zinc-500 p-2 rounded-md" required cols="45" rows="7"></textarea>
             </div>
             <div className="text-center">
-             <button type="submit" className="bg-violet-700 p-3 rounded-lg w-full cursor-pointer border border-zinc-600 hover:bg-violet-600">Kirim Pesan</button>
+              <button type="submit" className="bg-violet-700 p-3 rounded-lg w-full cursor-pointer border border-zinc-600 hover:bg-violet-600">
+                Kirim Pesan
+              </button>
             </div>
           </div>
         </form>
