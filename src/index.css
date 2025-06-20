@@ -10,7 +10,10 @@
   .btn-hover {
     perspective: 1000px;
     transform-style: preserve-3d;
-    transition: transform 0.5s ease, background-color 0.5s ease;
+    transition: transform 0.5s ease, background-color 0.5s ease, box-shadow 0.3s ease;
+    background: linear-gradient(135deg, #7f5af0, #2cb67d);
+    color: white;
+    box-shadow: 0 4px 14px rgba(127, 90, 240, 0.4);
   }
 
   .btn-hover:hover {
@@ -18,8 +21,11 @@
   }
   
   .animated-text {
-    background-size: 200% 200%;
-    animation: gradient-move 4s ease infinite;
+    background: linear-gradient(270deg, #f72585, #7209b7, #4361ee, #4cc9f0);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-move 6s ease infinite;
   }
 
   @keyframes gradient-move {

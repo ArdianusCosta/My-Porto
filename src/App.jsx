@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import { ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
 
 function App() {
@@ -35,18 +38,33 @@ function App() {
     e.preventDefault();
     try {
       await axios.post('http://localhost:8000/api/contact', formData);
-      alert('Pesan berhasil dikirim!');
+      toast.success("Pesan berhasil dikirim!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark", 
+      });
       setFormData({ nama: '', email: '', pesan: '' });
     } catch (err) {
-      alert('Gagal mengirim pesan.');
+      toast.error("Gagal mengirim pesan.", {
+        position: "top-right",
+        autoClose: 3000,
+        theme: "dark",
+      });
       console.error(err);
     }
-  };
+  }    
 
   if (!motivasi || !home || !about || !tool || !project) return null;
 
   return (
     <>
+  <ToastContainer />
+
     {/*Home*/}
     <div className="container mx-auto px-4">
       <div className="hero grid md:grid-cols-2 items-center pt-10 xl:gap-0 gap-6 grid-cols-1">
