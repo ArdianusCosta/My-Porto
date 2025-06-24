@@ -1,0 +1,7 @@
+.animated-text {
+    background: linear-gradient(270deg, #f72585, #7209b7, #4361ee, #4cc9f0);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-move 6s ease infinite;
+  }

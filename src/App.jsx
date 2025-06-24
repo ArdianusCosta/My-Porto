@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { ToastContainer } from "react-toastify";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
 
-function App() {
+function App({ lang, setLang }) {
   const [motivasi, setMotivasi] = useState(null);
   const [home, setHome] = useState(null);
   const [about, setAbout] = useState(null);
